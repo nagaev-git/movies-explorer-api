@@ -3,7 +3,7 @@ const BadRequestError = require("../errors/bad-request-err");
 const ForbiddenError = require("../errors/forbidden-err");
 const NotFoundError = require("../errors/not-found-err");
 
-module.exports.getMovie = (req, res, next) => {
+module.exports.getMovies = (req, res, next) => {
   Movie.find({})
     .then((movies) => {
       res.status(200).send(movies);

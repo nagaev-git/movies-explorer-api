@@ -8,27 +8,6 @@ const UnauthorizedError = require("../errors/unauthorized-err");
 
 const { NODE_ENV, JWT_SECRET } = process.env;
 
-module.exports.getUserByID = (req, res, next) => {
-  User.findById(req.params.userId)
-    .orFail(new Error("IncorrectID"))
-    .then((user) => {
-      res.status(200).send(user);
-    })
-    .catch((err) => {
-      if (err.name === "CastError") {
-        next(new BadRequestError("Переданы некорректные данные."));
-      } else if (err.message === "IncorrectID") {
-        next(
-          new NotFoundError(
-            `Карточка с указанным _id: ${req.params.userId} не найдена.`,
-          ),
-        );
-      } else {
-        next(err);
-      }
-    });
-};
-
 module.exports.getMyInfo = (req, res, next) => {
   User.findById(req.user._id)
     .then((user) => {

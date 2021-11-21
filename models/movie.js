@@ -53,8 +53,8 @@ const movieSchema = new mongoose.Schema(
       required: [true, "Поле 'owner' должно быть заполнено."],
     },
     movieId: {
-      type: mongoose.ObjectId,
-      ref: "movie",
+      type: String,
+      unique: true,
       required: [true, "Поле 'movie_id' должно быть заполнено."],
     },
     nameRU: {
