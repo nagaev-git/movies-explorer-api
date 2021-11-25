@@ -1,4 +1,9 @@
-const allowedCors = ["http://localhost:3000", "https://localhost:3000"];
+const allowedCors = [
+  "http://bestfilms.nomoredomains.rocks",
+  "https://bestfilms.nomoredomains.rocks",
+  "http://localhost:3000",
+  "https://localhost:3000",
+];
 
 module.exports = (req, res, next) => {
   const { origin } = req.headers;
