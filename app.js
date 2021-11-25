@@ -13,7 +13,7 @@ const { login, createUser } = require("./controllers/users");
 const auth = require("./middlewares/auth");
 const errorHandler = require("./middlewares/error");
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3001 } = process.env;
 
 mongoose.connect("mongodb://localhost:27017/bitfilmsdb", {
   useNewUrlParser: true,
