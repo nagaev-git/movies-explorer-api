@@ -10,15 +10,21 @@ const { NODE_ENV, JWT_SECRET } = process.env;
 
 module.exports.getMyInfo = (req, res, next) => {
   User.findById(req.user._id)
+    .orFail(() => {
+      next(
+        new NotFoundError(
+          "Пользователь по заданному ID отсутствует в базе данных",
+        ),
+      );
+    })
     .then((user) => {
       res.status(200).send(user);
     })
     .catch((err) => {
       if (err.name === "CastError") {
         next(new BadRequestError("Переданы некорректные данные."));
-      } else {
-        next(err);
       }
+      return next(err);
     });
 };
 

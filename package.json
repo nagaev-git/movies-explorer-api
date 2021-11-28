@@ -2,7 +2,7 @@
   "name": "movies-explorer-api",
   "version": "1.0.0",
   "description": "movie library",
-  "main": "app.js",
+  "main": "index.js",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "celebrate": "^15.0.0",
@@ -24,8 +24,8 @@
   },
   "scripts": {
     "lint": "eslint --fix --ext .js,.jsx .",
-    "start": "node app.js",
-    "dev": "nodemon app.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",

@@ -5,7 +5,7 @@ const {
   createMovie,
   deleteMovieByID,
 } = require("../controllers/movies");
-const regExp = require("../regexp/regexp");
+const urlValidator = require("../utils/urlValidator");
 
 router.get("/movies", getMovies);
 router.post(
@@ -17,10 +17,10 @@ router.post(
       duration: Joi.number().required(),
       year: Joi.string().required(),
       description: Joi.string().required(),
-      image: Joi.string().required().pattern(regExp),
-      trailer: Joi.string().required().pattern(regExp),
-      thumbnail: Joi.string().required().pattern(regExp),
-      movieId: Joi.string().required(),
+      image: Joi.string().required().custom(urlValidator),
+      trailer: Joi.string().required().custom(urlValidator),
+      thumbnail: Joi.string().required().custom(urlValidator),
+      movieId: Joi.number().required(),
       nameRU: Joi.string().required(),
       nameEN: Joi.string().required(),
     }),
